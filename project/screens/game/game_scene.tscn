@@ -1,20 +1,93 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfnef885bvt5u"]
+[gd_scene load_steps=9 format=3 uid="uid://cfnef885bvt5u"]
 
 [ext_resource type="Script" uid="uid://cqdnoi24guymt" path="res://screens/game/game_script.gd" id="1_e6mtp"]
-[ext_resource type="Texture2D" uid="uid://ch2c0uus03qn6" path="res://assets/textures/godot_logo.png" id="1_wpo6x"]
 [ext_resource type="PackedScene" uid="uid://c4oy6yui5ffhj" path="res://screens/play_menu/play_menu_scene.tscn" id="2_jjnch"]
-[ext_resource type="Script" uid="uid://buy4c3xhcnogx" path="res://screens/game/twirl.gd" id="2_uald8"]
+[ext_resource type="Script" uid="uid://dghkl2ansufrm" path="res://screens/game/route_node.gd" id="3_1v58h"]
+[ext_resource type="Texture2D" uid="uid://lvjjic7sxqci" path="res://assets/textures/kenny_assets/route.png" id="3_b275y"]
+[ext_resource type="Texture2D" uid="uid://70ihoc05j8cv" path="res://assets/textures/kenny_assets/node.png" id="4_6vlqa"]
+[ext_resource type="Script" uid="uid://cvdscxsaacv3m" path="res://screens/game/connections.gd" id="4_jjnch"]
+[ext_resource type="Script" uid="uid://d3cyvtxp1bcay" path="res://screens/game/connection.gd" id="5_b275y"]
+[ext_resource type="PackedScene" uid="uid://dlschjeli3fba" path="res://screens/game/Player.tscn" id="7_tvl6b"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_e6mtp")
 play_menu = ExtResource("2_jjnch")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(587, 308)
-scale = Vector2(0.146484, 0.146484)
-texture = ExtResource("1_wpo6x")
-script = ExtResource("2_uald8")
-rate = 1.0
-
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+
+[node name="Level_1" type="Node2D" parent="."]
+
+[node name="Route Nodes" type="Node2D" parent="Level_1"]
+
+[node name="RouteNode" type="Node2D" parent="Level_1/Route Nodes" node_paths=PackedStringArray("connection_1")]
+position = Vector2(184, 161)
+script = ExtResource("3_1v58h")
+connection_1 = NodePath("../RouteNode2")
+metadata/_custom_type_script = "uid://dghkl2ansufrm"
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_1/Route Nodes/RouteNode"]
+texture = ExtResource("3_b275y")
+
+[node name="RouteNode2" type="Node2D" parent="Level_1/Route Nodes" node_paths=PackedStringArray("connection_0", "connection_1")]
+position = Vector2(184, 491)
+script = ExtResource("3_1v58h")
+connection_0 = NodePath("../RouteNode")
+connection_1 = NodePath("../RouteNode3")
+metadata/_custom_type_script = "uid://dghkl2ansufrm"
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_1/Route Nodes/RouteNode2"]
+texture = ExtResource("3_b275y")
+
+[node name="RouteNode3" type="Node2D" parent="Level_1/Route Nodes" node_paths=PackedStringArray("connection_0", "connection_1")]
+position = Vector2(599, 491)
+script = ExtResource("3_1v58h")
+connection_0 = NodePath("../RouteNode2")
+connection_1 = NodePath("../RouteNode4")
+metadata/_custom_type_script = "uid://dghkl2ansufrm"
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_1/Route Nodes/RouteNode3"]
+texture = ExtResource("3_b275y")
+
+[node name="RouteNode4" type="Node2D" parent="Level_1/Route Nodes" node_paths=PackedStringArray("connection_0", "connection_1")]
+position = Vector2(599, 161)
+script = ExtResource("3_1v58h")
+connection_0 = NodePath("../RouteNode")
+connection_1 = NodePath("../RouteNode5")
+metadata/_custom_type_script = "uid://dghkl2ansufrm"
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_1/Route Nodes/RouteNode4"]
+texture = ExtResource("3_b275y")
+
+[node name="RouteNode5" type="Node2D" parent="Level_1/Route Nodes" node_paths=PackedStringArray("connection_0")]
+position = Vector2(1010, 161)
+script = ExtResource("3_1v58h")
+connection_0 = NodePath("../RouteNode4")
+metadata/_custom_type_script = "uid://dghkl2ansufrm"
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_1/Route Nodes/RouteNode5"]
+texture = ExtResource("4_6vlqa")
+
+[node name="Connections" type="Node2D" parent="Level_1"]
+visible = false
+script = ExtResource("4_jjnch")
+
+[node name="Connection" type="Node2D" parent="Level_1/Connections"]
+script = ExtResource("5_b275y")
+metadata/_custom_type_script = "uid://d3cyvtxp1bcay"
+
+[node name="Connection2" type="Node2D" parent="Level_1/Connections"]
+script = ExtResource("5_b275y")
+metadata/_custom_type_script = "uid://d3cyvtxp1bcay"
+
+[node name="Connection3" type="Node2D" parent="Level_1/Connections"]
+script = ExtResource("5_b275y")
+metadata/_custom_type_script = "uid://d3cyvtxp1bcay"
+
+[node name="Connection4" type="Node2D" parent="Level_1/Connections"]
+script = ExtResource("5_b275y")
+metadata/_custom_type_script = "uid://d3cyvtxp1bcay"
+
+[node name="Player" parent="Level_1" node_paths=PackedStringArray("starting_node") instance=ExtResource("7_tvl6b")]
+position = Vector2(76, 72)
+starting_node = NodePath("../Route Nodes/RouteNode")

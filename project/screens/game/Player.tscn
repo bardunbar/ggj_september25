@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlschjeli3fba"]
+
+[ext_resource type="Script" uid="uid://bj4lxxh8ceqpl" path="res://screens/game/player.gd" id="1_24xae"]
+[ext_resource type="Texture2D" uid="uid://d3s4ko2h4wp02" path="res://assets/textures/kenny_assets/thread.png" id="2_5unck"]
+[ext_resource type="FontFile" uid="uid://d3co1gjnbnn36" path="res://assets/fonts/VT323-Regular.ttf" id="3_grggs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qk4c7"]
+font = ExtResource("3_grggs")
+font_size = 48
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_24xae")
+
+[node name="PlayerTexture" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+texture = ExtResource("2_5unck")
+
+[node name="Control0" type="Node2D" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="Control0"]
+offset_left = -19.0
+offset_top = -25.0
+offset_right = 21.0
+offset_bottom = 24.0
+text = "0"
+label_settings = SubResource("LabelSettings_qk4c7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control1" type="Node2D" parent="."]
+visible = false
+
+[node name="Label2" type="Label" parent="Control1"]
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = 25.0
+text = "1"
+label_settings = SubResource("LabelSettings_qk4c7")
+horizontal_alignment = 1
+vertical_alignment = 1

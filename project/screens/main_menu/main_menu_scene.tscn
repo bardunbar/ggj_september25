@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg2pqihw6wjud"]
+[gd_scene load_steps=8 format=3 uid="uid://cg2pqihw6wjud"]
 
 [ext_resource type="Script" uid="uid://uo5g3ojn10ra" path="res://screens/main_menu/main_menu_script.gd" id="1_givtq"]
-[ext_resource type="Texture2D" uid="uid://ch2c0uus03qn6" path="res://assets/textures/godot_logo.png" id="1_lgj5r"]
 [ext_resource type="PackedScene" uid="uid://cfnef885bvt5u" path="res://screens/game/game_scene.tscn" id="2_6iutv"]
+[ext_resource type="Texture2D" uid="uid://lvjjic7sxqci" path="res://assets/textures/kenny_assets/route.png" id="3_2qflc"]
+[ext_resource type="FontFile" uid="uid://d3co1gjnbnn36" path="res://assets/fonts/VT323-Regular.ttf" id="3_vndbf"]
+[ext_resource type="Texture2D" uid="uid://70ihoc05j8cv" path="res://assets/textures/kenny_assets/node.png" id="4_vndbf"]
+[ext_resource type="Texture2D" uid="uid://d3s4ko2h4wp02" path="res://assets/textures/kenny_assets/thread.png" id="5_uongy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uongy"]
+font = ExtResource("3_vndbf")
+font_size = 72
 
 [node name="MainMenuScene" type="Node2D"]
 script = ExtResource("1_givtq")
@@ -21,16 +28,42 @@ metadata/_edit_use_anchors_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuUI/CenterContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuUI/CenterContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MenuUI/CenterContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_lgj5r")
-expand_mode = 4
+
+[node name="Label" type="Label" parent="MenuUI/CenterContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "./run"
+label_settings = SubResource("LabelSettings_uongy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Logo" type="PanelContainer" parent="MenuUI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect2" type="TextureRect" parent="MenuUI/CenterContainer/VBoxContainer/Logo"]
+layout_mode = 2
+texture = ExtResource("3_2qflc")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="MenuUI/CenterContainer/VBoxContainer/Logo"]
+layout_mode = 2
+texture = ExtResource("4_vndbf")
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="MenuUI/CenterContainer/VBoxContainer/Logo"]
+layout_mode = 2
+texture = ExtResource("5_uongy")
+stretch_mode = 2
 
 [node name="PlayButton" type="Button" parent="MenuUI/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_fonts/font = ExtResource("3_vndbf")
+theme_override_font_sizes/font_size = 36
 text = "Play Game"
 
 [node name="QuitButton" type="Button" parent="MenuUI/CenterContainer/VBoxContainer"]
@@ -38,4 +71,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_neighbor_top = NodePath("../PlayButton")
+theme_override_fonts/font = ExtResource("3_vndbf")
+theme_override_font_sizes/font_size = 36
 text = "Quit Game"

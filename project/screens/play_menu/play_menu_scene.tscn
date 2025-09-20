@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4oy6yui5ffhj"]
+[gd_scene load_steps=3 format=3 uid="uid://c4oy6yui5ffhj"]
 
 [ext_resource type="Script" uid="uid://upcj28bpj8b1" path="res://screens/play_menu/play_menu_script.gd" id="1_in4hb"]
+[ext_resource type="FontFile" uid="uid://d3co1gjnbnn36" path="res://assets/fonts/VT323-Regular.ttf" id="2_qi7bd"]
 
 [node name="PlayMenuScene" type="Control"]
 layout_mode = 3
@@ -33,6 +34,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qi7bd")
 theme_override_font_sizes/font_size = 50
 text = "Paused"
 horizontal_alignment = 1
@@ -41,14 +43,20 @@ vertical_alignment = 1
 [node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qi7bd")
+theme_override_font_sizes/font_size = 36
 text = "Resume"
 
 [node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qi7bd")
+theme_override_font_sizes/font_size = 36
 text = "Main Menu"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qi7bd")
+theme_override_font_sizes/font_size = 36
 text = "Quit"
